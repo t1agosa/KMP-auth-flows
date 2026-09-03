@@ -1,4 +1,4 @@
-package com.jetbrains.kmpapp
+package com.tiago.kmpauthflows
 
 import androidx.compose.ui.window.ComposeUIViewController
 

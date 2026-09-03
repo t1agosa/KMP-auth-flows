@@ -14,11 +14,11 @@ dependencies {
 }
 
 android {
-    namespace = "com.jetbrains.kmpapp"
+    namespace = "com.tiago.kmpauthflows"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.jetbrains.kmpapp"
+        applicationId = "com.tiago.kmpauthflows"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1

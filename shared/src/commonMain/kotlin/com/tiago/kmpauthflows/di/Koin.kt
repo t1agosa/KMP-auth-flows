@@ -1,4 +1,4 @@
-package com.jetbrains.kmpapp.di
+package com.tiago.kmpauthflows.di
 
 import com.jetbrains.kmpapp.data.InMemoryMuseumStorage
 import com.jetbrains.kmpapp.data.KtorMuseumApi
