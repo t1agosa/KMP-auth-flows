@@ -20,7 +20,7 @@ kotlin {
     }
 
     androidLibrary {
-        namespace = "com.tiago.kmpauthflows"
+        namespace = "com.tiago.kmpauthflows.shared"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
 
