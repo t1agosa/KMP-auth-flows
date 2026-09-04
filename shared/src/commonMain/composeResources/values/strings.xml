@@ -10,4 +10,6 @@
     <string name="auth_error_sign_in_cancelled">El inicio de sesión fue cancelado</string>
     <string name="auth_error_unknown">Ocurrió un error inesperado</string>
 
+    <string name="register_error_passwords_dont_match">Las contraseñas no coinciden</string>
+
 </resources>

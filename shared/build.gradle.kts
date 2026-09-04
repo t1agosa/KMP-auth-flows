@@ -78,12 +78,20 @@ kotlin {
             implementation(libs.koin.compose.viewmodel)
 
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.androidx.lifecycle.viewmodel)
         }
         commonTest.dependencies {
             implementation(kotlin("test"))
             implementation(libs.kotlinx.coroutines.test)
             implementation(libs.mockk)
+            implementation(libs.turbine)
         }
+    }
+}
+
+compose {
+    resources {
+        packageOfResClass = "com.tiago.kmpauthflows.shared.generated.resources"
     }
 }
 

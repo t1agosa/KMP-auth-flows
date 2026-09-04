@@ -6,7 +6,11 @@ import com.tiago.kmpauthflows.data.google.GoogleSignInProvider
 import com.tiago.kmpauthflows.data.repository.AuthRepositoryImpl
 import com.tiago.kmpauthflows.domain.repository.AuthRepository
 import com.tiago.kmpauthflows.domain.usecase.*
+import com.tiago.kmpauthflows.presentation.home.HomeViewModel
+import com.tiago.kmpauthflows.presentation.login.LoginViewModel
+import com.tiago.kmpauthflows.presentation.register.RegisterViewModel
 import org.koin.android.ext.koin.androidContext
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val androidAuthModule = module {
@@ -22,4 +26,8 @@ val androidAuthModule = module {
     single { LoginWithAppleUseCase(get()) }
     single { LogoutUseCase(get()) }
     single { ObserveAuthStateUseCase(get()) }
+
+    viewModel { LoginViewModel(get(), get(), get(), get(), get()) }
+    viewModel { RegisterViewModel(get(), get(), get()) }
+    viewModel { HomeViewModel(get(), get()) }
 }

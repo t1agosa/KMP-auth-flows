@@ -1,4 +1,4 @@
-rootProject.name = "KMP-App-Template"
+rootProject.name = "kmp-auth-flows"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
