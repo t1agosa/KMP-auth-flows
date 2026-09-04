@@ -4,5 +4,6 @@ data class FirebaseUserData(
     val id: String,
     val email: String?,
     val displayName: String?,
-    val photoUrl: String?
+    val photoUrl: String?,
+    val providerId: String?
 )

@@ -6,8 +6,8 @@ import com.tiago.kmpauthflows.domain.model.User
 import com.tiago.kmpauthflows.domain.util.Result
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
-import kotlin.test.assertEquals
 import kotlin.test.assertIs
+import kotlin.test.assertTrue
 
 class LoginWithAppleUseCaseTest {
 
@@ -15,7 +15,7 @@ class LoginWithAppleUseCaseTest {
     private val loginWithApple = LoginWithAppleUseCase(fakeRepository)
 
     @Test
-    fun `delega idToken y nonce al repositorio y devuelve el resultado tal cual`() = runTest {
+    fun `delega en el repositorio y devuelve el resultado tal cual`() = runTest {
         fakeRepository.userToReturn = User(
             id = "1",
             email = "tiago@icloud.com",
@@ -24,9 +24,9 @@ class LoginWithAppleUseCaseTest {
             provider = AuthProvider.APPLE
         )
 
-        val result = loginWithApple("fake-apple-id-token", "fake-nonce")
+        val result = loginWithApple()
 
         assertIs<Result.Success<User>>(result)
-        assertEquals("fake-apple-id-token", fakeRepository.lastAppleIdToken)
+        assertTrue(fakeRepository.appleLoginCalled)
     }
 }

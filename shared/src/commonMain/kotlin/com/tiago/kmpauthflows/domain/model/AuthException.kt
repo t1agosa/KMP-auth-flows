@@ -7,6 +7,6 @@ sealed class AuthException(cause: Throwable? = null) : Exception(cause) {
     data object WeakPassword : AuthException()
     data object InvalidEmailFormat : AuthException()
     data object NetworkError : AuthException()
-    data object SignInCAncelled : AuthException()
+    data object SignInCancelled : AuthException()
     data class Unknown(val original: Throwable) : AuthException(original)
 }

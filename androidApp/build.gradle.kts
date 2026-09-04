@@ -14,6 +14,8 @@ dependencies {
     implementation(libs.ktor.client.okhttp)
 
     implementation(platform("com.google.firebase:firebase-bom:34.18.0"))
+
+    implementation(libs.koin.core)
 }
 
 android {

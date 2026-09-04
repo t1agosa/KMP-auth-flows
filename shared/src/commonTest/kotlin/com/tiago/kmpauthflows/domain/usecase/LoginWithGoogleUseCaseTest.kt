@@ -6,8 +6,8 @@ import com.tiago.kmpauthflows.domain.model.User
 import com.tiago.kmpauthflows.domain.util.Result
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
-import kotlin.test.assertEquals
 import kotlin.test.assertIs
+import kotlin.test.assertTrue
 
 class LoginWithGoogleUseCaseTest {
 
@@ -15,7 +15,7 @@ class LoginWithGoogleUseCaseTest {
     private val loginWithGoogle = LoginWithGoogleUseCase(fakeRepository)
 
     @Test
-    fun `delega el idToken al repositorio y devuelve el resultado tal cual`() = runTest {
+    fun `delega en el repositorio y devuelve el resultado tal cual`() = runTest {
         fakeRepository.userToReturn = User(
             id = "1",
             email = "tiago@gmail.com",
@@ -24,9 +24,9 @@ class LoginWithGoogleUseCaseTest {
             provider = AuthProvider.GOOGLE
         )
 
-        val result = loginWithGoogle("fake-google-id-token")
+        val result = loginWithGoogle()
 
         assertIs<Result.Success<User>>(result)
-        assertEquals("fake-google-id-token", fakeRepository.lastGoogleIdToken)
+        assertTrue(fakeRepository.googleLoginCalled)
     }
 }

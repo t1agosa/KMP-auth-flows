@@ -5,6 +5,5 @@ import com.tiago.kmpauthflows.domain.repository.IAuthRepository
 import com.tiago.kmpauthflows.domain.util.Result
 
 class LoginWithGoogleUseCase(private val repository: IAuthRepository) {
-    suspend operator fun invoke(idToken: String): Result<User> =
-        repository.loginWithGoogle(idToken)
+    suspend operator fun invoke(): Result<User> = repository.loginWithGoogle()
 }

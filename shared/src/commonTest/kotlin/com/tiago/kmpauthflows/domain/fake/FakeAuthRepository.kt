@@ -16,9 +16,9 @@ class FakeAuthRepository : IAuthRepository {
         private set
     var lastEmailUsed: String? = null
         private set
-    var lastGoogleIdToken: String? = null
+    var googleLoginCalled = false
         private set
-    var lastAppleIdToken: String? = null
+    var appleLoginCalled = false
         private set
 
     private val authState = MutableStateFlow<User?>(null)
@@ -33,13 +33,13 @@ class FakeAuthRepository : IAuthRepository {
         return resultForUser()
     }
 
-    override suspend fun loginWithGoogle(idToken: String): Result<User> {
-        lastGoogleIdToken = idToken
+    override suspend fun loginWithGoogle(): Result<User> {
+        googleLoginCalled = true
         return resultForUser()
     }
 
-    override suspend fun loginWithApple(idToken: String, nonce: String): Result<User> {
-        lastAppleIdToken = idToken
+    override suspend fun loginWithApple(): Result<User> {
+        appleLoginCalled = true
         return resultForUser()
     }
 
@@ -51,7 +51,6 @@ class FakeAuthRepository : IAuthRepository {
 
     override fun observeAuthState(): Flow<User?> = authState
 
-    /** Solo para tests: simula un cambio de sesión sin pasar por login/logout real. */
     fun emitAuthState(user: User?) {
         authState.value = user
     }
