@@ -30,6 +30,9 @@ kotlin {
         androidResources {
             enable = true
         }
+
+        withHostTestBuilder {}.configure {}   // ← habilita los tests unitarios (JVM/host)
+
     }
 
     sourceSets {
