@@ -64,9 +64,12 @@ kotlin {
             implementation(libs.compose.components.resources)
             implementation(libs.compose.uiToolingPreview)
 
-            implementation(libs.navigation.compose)
+            implementation(libs.navigation3.ui)
+            implementation(libs.kotlinx.serialization.core)
+
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.compose.material.icons.core)
+            implementation(libs.compose.material.icons.extended)
 
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.content.negotiation)
@@ -79,6 +82,8 @@ kotlin {
 
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.androidx.lifecycle.viewmodel)
+
+
         }
         commonTest.dependencies {
             implementation(kotlin("test"))
@@ -86,6 +91,9 @@ kotlin {
             implementation(libs.mockk)
             implementation(libs.turbine)
         }
+    }
+    compilerOptions {
+        freeCompilerArgs.add("-Xexpect-actual-classes")
     }
 }
 

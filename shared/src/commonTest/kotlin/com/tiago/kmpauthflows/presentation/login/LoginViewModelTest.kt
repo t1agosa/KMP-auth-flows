@@ -104,7 +104,7 @@ class LoginViewModelTest {
             expectNoEvents() // ningún Effect — SignInCancelled se ignora a propósito
         }
 
-        assertEquals(false, viewModel.state.value.isLoading) // el loading sí se apaga
+        assertEquals(null, viewModel.state.value.loadingTarget) // el loading sí se apaga
     }
 
     @Test

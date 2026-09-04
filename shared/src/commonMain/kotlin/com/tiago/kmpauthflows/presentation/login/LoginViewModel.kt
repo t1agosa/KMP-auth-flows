@@ -69,11 +69,11 @@ class LoginViewModel(
                     passwordError = passwordError?.toMessageRes()
                 )
             }
-            return // corta antes de llamar al repositorio — ver punto 27/31, evitar trabajo innecesario
+            return
         }
 
         viewModelScope.launch {
-            _state.update { it.copy(isLoading = true) }
+            _state.update { it.copy(loadingTarget = LoginLoadingTarget.EMAIL) }
             val result = loginWithEmailUseCase(current.email, current.password)
             handleResult(result)
         }
@@ -81,7 +81,7 @@ class LoginViewModel(
 
     private fun onGoogleSignInClicked(activity: PlatformActivity) {
         viewModelScope.launch {
-            _state.update { it.copy(isLoading = true) }
+            _state.update { it.copy(loadingTarget = LoginLoadingTarget.GOOGLE) }
             val result = loginWithGoogleUseCase(activity)
             handleResult(result)
         }
@@ -89,14 +89,14 @@ class LoginViewModel(
 
     private fun onAppleSignInClicked(activity: PlatformActivity) {
         viewModelScope.launch {
-            _state.update { it.copy(isLoading = true) }
+            _state.update { it.copy(loadingTarget = LoginLoadingTarget.APPLE) }
             val result = loginWithAppleUseCase(activity)
             handleResult(result)
         }
     }
 
     private suspend fun handleResult(result: Result<User>) {
-        _state.update { it.copy(isLoading = false) }
+        _state.update { it.copy(loadingTarget = null) }
 
         when (result) {
             is Result.Success -> _effect.emit(LoginEffect.NavigateToHome)
