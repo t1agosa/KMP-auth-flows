@@ -6,17 +6,13 @@ import androidx.credentials.exceptions.GetCredentialCancellationException
 import androidx.credentials.exceptions.GetCredentialException
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
-import com.tiago.kmpauthflows.data.android.ActivityProvider
 import com.tiago.kmpauthflows.domain.model.AuthException
+import com.tiago.kmpauthflows.platform.PlatformActivity
 import kotlinx.coroutines.CancellationException
 
-actual class GoogleSignInProvider(
-    private val activityProvider: ActivityProvider,
-    private val webClientId: String
-) {
+actual class GoogleSignInProvider(private val webClientId: String) {
 
-    actual suspend fun requestIdToken(): String {
-        val activity = activityProvider.requireCurrentActivity()
+    actual suspend fun requestIdToken(activity: PlatformActivity): String {
         val credentialManager = CredentialManager.create(activity)
 
         val googleIdOption = GetGoogleIdOption.Builder()

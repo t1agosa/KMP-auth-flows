@@ -2,12 +2,13 @@ package com.tiago.kmpauthflows.domain.fake
 
 import com.tiago.kmpauthflows.domain.model.AuthException
 import com.tiago.kmpauthflows.domain.model.User
-import com.tiago.kmpauthflows.domain.repository.IAuthRepository
+import com.tiago.kmpauthflows.domain.repository.AuthRepository
+import com.tiago.kmpauthflows.platform.PlatformActivity
 import com.tiago.kmpauthflows.domain.util.Result
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 
-class FakeAuthRepository : IAuthRepository {
+class FakeAuthRepository : AuthRepository {
 
     var userToReturn: User? = null
     var exceptionToThrow: AuthException? = null
@@ -33,12 +34,12 @@ class FakeAuthRepository : IAuthRepository {
         return resultForUser()
     }
 
-    override suspend fun loginWithGoogle(): Result<User> {
+    override suspend fun loginWithGoogle(activity: PlatformActivity): Result<User> {
         googleLoginCalled = true
         return resultForUser()
     }
 
-    override suspend fun loginWithApple(): Result<User> {
+    override suspend fun loginWithApple(activity: PlatformActivity): Result<User> {
         appleLoginCalled = true
         return resultForUser()
     }

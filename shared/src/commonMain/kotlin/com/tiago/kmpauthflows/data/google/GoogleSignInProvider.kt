@@ -1,6 +1,7 @@
 package com.tiago.kmpauthflows.data.google
 
+import com.tiago.kmpauthflows.platform.PlatformActivity
+
 expect class GoogleSignInProvider {
-    /** Devuelve el idToken de Google, listo para pasarle a FirebaseAuthService.signInWithGoogleIdToken(). */
-    suspend fun requestIdToken(): String
+    suspend fun requestIdToken(activity: PlatformActivity): String
 }

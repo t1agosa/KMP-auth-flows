@@ -1,17 +1,16 @@
 package com.tiago.kmpauthflows
 
 import android.app.Application
+import com.tiago.kmpauthflows.di.androidAuthModule
 import com.tiago.kmpauthflows.di.initKoin
-
-import com.tiago.kmpauthflows.data.android.ActivityProvider
+import org.koin.android.ext.koin.androidContext
 
 class KmpAuthFlowsApp : Application() {
     override fun onCreate() {
         super.onCreate()
-        val activityProvider = ActivityProvider()
-        registerActivityLifecycleCallbacks(activityProvider)
         initKoin {
-            // el módulo de Koin va a exponer este mismo activityProvider (Fase 4)
+            androidContext(this@KmpAuthFlowsApp)
+            modules(androidAuthModule)
         }
     }
 }

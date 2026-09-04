@@ -3,7 +3,7 @@ package com.tiago.kmpauthflows.data.firebase
 import com.tiago.kmpauthflows.data.model.FirebaseUserData
 import kotlinx.coroutines.flow.Flow
 
-expect class FirebaseAuthService {
+expect class FirebaseAuthService() {
     suspend fun signInWithEmail(email: String, password: String): FirebaseUserData
     suspend fun signUpWithEmail(email: String, password: String): FirebaseUserData
     suspend fun signInWithGoogleIdToken(idToken: String): FirebaseUserData

@@ -4,6 +4,8 @@ import com.tiago.kmpauthflows.domain.fake.FakeAuthRepository
 import com.tiago.kmpauthflows.domain.model.AuthProvider
 import com.tiago.kmpauthflows.domain.model.User
 import com.tiago.kmpauthflows.domain.util.Result
+import com.tiago.kmpauthflows.platform.PlatformActivity
+import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertIs
@@ -24,7 +26,8 @@ class LoginWithGoogleUseCaseTest {
             provider = AuthProvider.GOOGLE
         )
 
-        val result = loginWithGoogle()
+        val fakeActivity = mockk<PlatformActivity>()
+        val result = loginWithGoogle(fakeActivity)
 
         assertIs<Result.Success<User>>(result)
         assertTrue(fakeRepository.googleLoginCalled)

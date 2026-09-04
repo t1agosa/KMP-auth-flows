@@ -16,6 +16,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:34.18.0"))
 
     implementation(libs.koin.core)
+    implementation(libs.koin.android)
 }
 
 android {

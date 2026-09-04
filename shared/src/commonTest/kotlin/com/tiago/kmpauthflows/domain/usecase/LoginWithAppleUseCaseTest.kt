@@ -4,6 +4,8 @@ import com.tiago.kmpauthflows.domain.fake.FakeAuthRepository
 import com.tiago.kmpauthflows.domain.model.AuthProvider
 import com.tiago.kmpauthflows.domain.model.User
 import com.tiago.kmpauthflows.domain.util.Result
+import com.tiago.kmpauthflows.platform.PlatformActivity
+import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertIs
@@ -24,7 +26,8 @@ class LoginWithAppleUseCaseTest {
             provider = AuthProvider.APPLE
         )
 
-        val result = loginWithApple()
+        val fakeActivity = mockk<PlatformActivity>()
+        val result = loginWithApple(fakeActivity)
 
         assertIs<Result.Success<User>>(result)
         assertTrue(fakeRepository.appleLoginCalled)

@@ -1,11 +1,11 @@
 package com.tiago.kmpauthflows.domain.usecase
 
 import com.tiago.kmpauthflows.domain.model.User
-import com.tiago.kmpauthflows.domain.repository.IAuthRepository
+import com.tiago.kmpauthflows.domain.repository.AuthRepository
 import com.tiago.kmpauthflows.domain.util.Result
 
 class RegisterWithEmailUseCase(
-    private val repository: IAuthRepository,
+    private val repository: AuthRepository,
     private val validateEmail: ValidateEmailUseCase,
     private val validatePassword: ValidatePasswordUseCase
 ) {
