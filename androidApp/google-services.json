@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "896722218322",
+    "project_id": "kmp-auth-flows",
+    "storage_bucket": "kmp-auth-flows.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896722218322:android:aa6ccbc502afc60b059e8b",
+        "android_client_info": {
+          "package_name": "com.tiago.kmpauthflows"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "896722218322-l7s0dfm4c3cj84r8tqmurvt3n4rbcs79.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tiago.kmpauthflows",
+            "certificate_hash": "8c3a01886642ca9dd4fcdf05bfaa28996854e5b5"
+          }
+        },
+        {
+          "client_id": "896722218322-7uaqeiadespmnrclmcpobljag2ihcdn5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAC5hYPDtoB6V3Pc-LK_HyDp6y7kYTQT4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "896722218322-7uaqeiadespmnrclmcpobljag2ihcdn5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

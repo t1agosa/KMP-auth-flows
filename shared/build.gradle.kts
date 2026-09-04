@@ -19,7 +19,7 @@ kotlin {
         }
     }
 
-    androidLibrary {
+    android {
         namespace = "com.tiago.kmpauthflows.shared"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
@@ -36,13 +36,25 @@ kotlin {
     }
 
     sourceSets {
-        androidMain.dependencies {
-            implementation(libs.compose.uiToolingPreview)
-            implementation(libs.androidx.activity.compose)
-            implementation(libs.ktor.client.okhttp)
+        androidMain {
+            dependencies {
+                implementation(libs.compose.uiToolingPreview)
+                implementation(libs.androidx.activity.compose)
+                implementation(libs.ktor.client.okhttp)
+
+                implementation(project.dependencies.platform(libs.firebase.bom))   // BoM primero, sin versión propia
+                implementation(libs.firebase.auth)
+                implementation(libs.androidx.credentials)
+                implementation(libs.androidx.credentials.play.services.auth)
+                implementation(libs.googleid)
+
+                implementation(libs.kotlinx.coroutines.play.services)
+            }
         }
-        iosMain.dependencies {
-            implementation(libs.ktor.client.darwin)
+        iosMain {
+            dependencies {
+                implementation(libs.ktor.client.darwin)
+            }
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
